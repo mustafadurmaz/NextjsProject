@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Inter, Roboto } from 'next/font/google';
-import {cookies} from 'next/headers'
+import { cookies } from 'next/headers'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -15,7 +15,12 @@ const roboto = Roboto({
     display: 'swap'
 })
 
-const Home = () => {
+const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+const Home = async () => {
+    await sleep(3000)
     const newCookies = cookies();
     console.log(newCookies.getAll());
     return (
