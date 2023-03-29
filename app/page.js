@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Inter, Roboto } from 'next/font/google';
 import { cookies } from 'next/headers'
+import Test from './test';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -41,6 +42,7 @@ const Home = async () => {
                 width={300}
                 height={300}
             />
+            <Test/>
         </>
     )
 }
