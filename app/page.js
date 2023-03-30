@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { Inter, Roboto } from 'next/font/google';
 import { cookies } from 'next/headers'
 import Test from './test';
+import {redirect} from 'next/navigation'
+import TestUseRrouter from './testUseRouter';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -23,6 +25,12 @@ const sleep = (ms) => {
 const Home = async () => {
     await sleep(3000)
     const newCookies = cookies();
+    let nav1 = false;
+
+    if (nav1) {
+        redirect("/about")
+    }
+
     console.log(newCookies.getAll());
     return (
         <>
@@ -42,7 +50,8 @@ const Home = async () => {
                 width={300}
                 height={300}
             />
-            <Test/>
+            <Test />
+            <TestUseRrouter />
         </>
     )
 }
