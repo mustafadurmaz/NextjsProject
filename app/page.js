@@ -22,6 +22,16 @@ const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+const fetchData1=async ()=>{
+    const res=await fetch("https://restcountries.com/v3.1/name/turkey")
+    return res.json();
+}
+
+const fetchData2=async ()=>{
+    const res=await fetch("https://restcountries.com/v3.1/name/germany")
+    return res.json();
+}
+
 const Home = async () => {
     await sleep(3000)
     const newCookies = cookies();
@@ -30,6 +40,17 @@ const Home = async () => {
     if (nav1) {
         redirect("/about")
     }
+
+    // const data1=await fetchData();
+
+    const data1=fetchData1();
+    const data2=fetchData2();
+
+    const resultData=await Promise.all([
+        data1, data2
+    ]);
+    
+    console.log(resultData);
 
     console.log(newCookies.getAll());
     return (
